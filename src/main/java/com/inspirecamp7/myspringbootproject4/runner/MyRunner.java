@@ -7,6 +7,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
+import java.util.function.Consumer;
 
 @Component
 @Order(2)
@@ -27,7 +28,20 @@ public class MyRunner implements ApplicationRunner {
             System.out.println("name = " + name);
         }
 
+        // 1단계 Annoymous Inner Class (익명 내부 클래스)
+        optionNames.forEach(new Consumer<String>() {
+            @Override
+            public void accept(String name) {
+                System.out.println("Inner Class인 경우 name = " + name);
+            }
+        });
+
+        // 2단계 람다 표현식
         optionNames.forEach(name -> System.out.println("name = " + name));
-        
+
+
+        // 3단계 Method Reference
+        optionNames.forEach(System.out::println);
+
     }
 }
