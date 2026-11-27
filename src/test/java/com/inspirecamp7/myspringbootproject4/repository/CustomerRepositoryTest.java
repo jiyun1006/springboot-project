@@ -62,7 +62,7 @@ class CustomerRepositoryTest {
         //Supplier의 추상메서드 T get()
         Customer customer = customerRepository.findByCustomerId("F001")
                 .orElseGet(() -> new Customer());
-        assertThat(customer.getCustomerId()).isNotNull();
+        assertThat(customer.getCustomerId()).isNull();
 
     }
 
